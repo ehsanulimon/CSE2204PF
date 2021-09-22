@@ -4,10 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RMSConsoleApplication
 {
     class B2_MonthlyRental
     {
-        int a = 7;
+
+        public B2_MonthlyRental()
+        {
+            Console.WriteLine("linkon");
+
+
+
+            Console.ReadKey();    
+        }
+
+         
+        
     }
 }
