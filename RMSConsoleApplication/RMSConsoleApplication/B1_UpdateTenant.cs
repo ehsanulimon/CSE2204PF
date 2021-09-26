@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace RMSConsoleApplication
 {
@@ -11,13 +12,9 @@ namespace RMSConsoleApplication
     {
         public B1_UpdateTenant()
         {
+            Clear();
             Console.WriteLine("imon");
 
-
-
-
-
-         
             Console.ReadKey();
         }
     }

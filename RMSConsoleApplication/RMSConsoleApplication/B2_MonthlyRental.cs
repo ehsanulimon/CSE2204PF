@@ -12,6 +12,7 @@ namespace RMSConsoleApplication
 
         public B2_MonthlyRental()
         {
+                 Console.Clear();
             Console.WriteLine("linkon");
 
 
