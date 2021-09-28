@@ -16,7 +16,7 @@ namespace RMSConsoleApplication
             
                  Title = "Tenant Management System";
              string Logo;
-            
+           
              Logo = @"                                                                                                  
    _____                 _      _____                                   _      _____         _             
   |_   _|___ ___ ___ ___| |_   |     |___ ___ ___ ___ ___ _____ ___ ___| |_   |   __|_ _ ___| |_ ___ _____ 
@@ -25,7 +25,8 @@ namespace RMSConsoleApplication
                                                  |___|                              |___|                  
 
 ";
-            string[] options = {"Update Tenant","Monthly Rental","Exit"};
+          
+            string[] options = {"Update Tenant","Monthly Rental","    Exit    "};
             Menu mainManu =new Menu(Logo,options);
             mainManu.DisplayOptions();
             int SelectedIndex = mainManu.run();
@@ -37,7 +38,7 @@ namespace RMSConsoleApplication
                     
                  WriteLine("\nPress any key to exit...");
                  ReadKey(true);
-                 Environment.Exit(0);
+                
 
                    break; 
                 case 1:
@@ -45,14 +46,14 @@ namespace RMSConsoleApplication
 
                  WriteLine("\nPress any key to exit...");
                  ReadKey(true);
-                 Environment.Exit(0);
+                
 
                     break; 
                  case 2:
 
                  WriteLine("\nPress any key to exit...");
                  ReadKey(true);
-                 Environment.Exit(0);
+             
 
                     break;
             }
@@ -63,7 +64,7 @@ namespace RMSConsoleApplication
         
     }
       class Menu
-        {
+        {      
             private int SelectedIndex;
             private string[] Options;
         private string logo;
@@ -74,7 +75,7 @@ namespace RMSConsoleApplication
                 SelectedIndex = 0;
             }
             public void DisplayOptions()
-            {
+            {       
                       WriteLine(logo);     
                 for(int i=0; i < Options.Length; i++)
                 {
@@ -82,7 +83,7 @@ namespace RMSConsoleApplication
                 string prefix;
                 if (i == SelectedIndex)
                 {
-                    prefix =">>";
+                    prefix ="* ";
                             ForegroundColor =ConsoleColor.Black;
                             BackgroundColor = ConsoleColor.White;
                 }
@@ -92,7 +93,7 @@ namespace RMSConsoleApplication
                             ForegroundColor =ConsoleColor.White;
                             BackgroundColor = ConsoleColor.Black;
                 }
-                    
+                
                     WriteLine($"{prefix}<< {currentOption} >>");
                 }
                 ResetColor();
