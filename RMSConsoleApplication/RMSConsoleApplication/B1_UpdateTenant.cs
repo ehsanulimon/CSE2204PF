@@ -23,38 +23,361 @@ namespace RMSConsoleApplication
               switch (SelectedIndex)
             {
                 case 0:
-                    WriteLine("Show all Tenant info");
-                         test();
-                         ReadKey(true);
+                      info();
                     B1_UpdateTenant n0 =new B1_UpdateTenant();
                     break;
                 case 1:
-                     WriteLine("Add new Tenant info");
-                         ReadKey(true);
+                        addnew_tenant();
                     B1_UpdateTenant n1 =new B1_UpdateTenant();
                     break;
                 case 2:
-                     WriteLine("Tenant update");
-                         ReadKey(true);
+                      update();
                     B1_UpdateTenant n2 =new B1_UpdateTenant();
                     break;
                 case 3:
-                     WriteLine("Tenant deletes");
-                         ReadKey(true);
+                      delete();
                     B1_UpdateTenant n3 =new B1_UpdateTenant();
                     break;
                 case 4:
-                     WriteLine("Exit");
-                         ReadKey(true);
+                      WriteLine("Your work is done and you can go now.");
                    
                     break;
                    
             }
         }
-        public void test()
+        ///////////////////inner part start///////////////////////
+        public static void  info()
         {
-             WriteLine("Show all Tenant info");
+               
+               Write("Show all info (Y)\nSearch info (N): ");
+                  string  str = ReadLine();
+         
+                string sY = "Y";
+                bool bY = str.Contains(sY);
+                 string sy = "y";
+                bool by = str.Contains(sy);
+                string sN = "N";
+                bool bN = str.Contains(sN);
+                 string sn = "n";
+                bool bn = str.Contains(sn);
+
+                if (bY == true || by==true)
+                {
+                   allinfo();
+                   
+                }
+                else if(bN==true ||bn==true)
+                {
+         
+                     search_tenant();
+                  
+                }
+            else
+            {
+                WriteLine("try again");
+            }
         }
+          public static void allinfo()
+        {
+            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+            string name="abc", apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
+
+            while(name!=null)
+            {
+                name = sr.ReadLine();
+                apartmentID = sr.ReadLine();
+                address = sr.ReadLine();
+                monthlyRent = sr.ReadLine();
+                advanceMoney = sr.ReadLine();
+                phoneNumber = sr.ReadLine();
+                email = sr.ReadLine();
+                date = sr.ReadLine();
+                if (name != null)
+                {
+                     ForegroundColor =ConsoleColor.Green;
+                       
+                         WriteLine("--------------------------");
+                         WriteLine("|--Name         : "+name+"--|");
+                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
+                         WriteLine("|--Address      : "+address+"--|");
+                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
+                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
+                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
+                         WriteLine("|--Email        : "+email+"--|");
+                         WriteLine("|--Date         : "+date+"--|");
+                         
+                         WriteLine("--------------------------");
+                }
+            }
+
+         ReadLine();
+        }
+
+        ////
+    public static void addnew_tenant()
+        {
+            if (!File.Exists(@"E:/sp_20.txt"))
+            {
+                File.Create(@"E:/sp_20.txt").Close();
+            }
+
+            string name, apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
+             ForegroundColor =ConsoleColor.Yellow;
+            WriteLine("Please. Create a new Tenant Account info:");
+            Write("Name ");
+            name = ReadLine();
+            Write("Apartment ID ");
+            apartmentID = ReadLine();
+            Write("Address ");
+            address = ReadLine();
+            Write("Monthly Rent ");
+            monthlyRent = ReadLine();
+            Write("Advance Money ");
+            advanceMoney = ReadLine();
+            Write("Phone Number ");
+            phoneNumber = ReadLine();
+             Write("Email ");
+            email = ReadLine();
+             Write("Date ");
+            date = ReadLine();
+
+            try
+            {
+                StreamWriter sw = File.AppendText(@"E:/sp_20.txt");
+
+                        sw.WriteLine(name);
+                sw.WriteLine(apartmentID);
+               sw.WriteLine(address);
+             sw.WriteLine(monthlyRent);
+             sw.WriteLine(advanceMoney);
+                 sw.WriteLine(phoneNumber);
+                sw.WriteLine(email);
+                 sw.WriteLine(date);
+
+                sw.Close();
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+
+       public static void search_tenant()
+        {
+            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+
+            
+
+             string name="abc", apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
+          
+            string search_name;
+            int found = 0;
+            Console.WriteLine("Enter the Tenant name to show details:");
+            search_name = Console.ReadLine();
+
+            while (name!=null)
+            {
+                name = sr.ReadLine();
+                apartmentID = sr.ReadLine();
+                address = sr.ReadLine();
+                monthlyRent = sr.ReadLine();
+                advanceMoney = sr.ReadLine();
+                phoneNumber = sr.ReadLine();
+                email = sr.ReadLine();
+                date = sr.ReadLine();
+
+                if (name !=null && name.ToUpper().Equals(search_name.ToUpper()))
+                {
+                    found = 1;
+                         ForegroundColor =ConsoleColor.Blue;
+                       
+                         WriteLine("--------------------------");
+                         WriteLine("|--Name         : "+name+"--|");
+                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
+                         WriteLine("|--Address      : "+address+"--|");
+                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
+                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
+                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
+                         WriteLine("|--Email        : "+email+"--|");
+                         WriteLine("|--Date         : "+date+"--|");
+                         
+                         WriteLine("--------------------------");
+                   
+                    break;
+                }
+            }
+
+            if(found==0)
+            {
+                WriteLine("No such Tenant exists.");
+            }
+            sr.Close();
+           ReadLine();
+        }
+     
+
+       public static void update()
+        {
+            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+              ForegroundColor =ConsoleColor.Yellow;
+            BackgroundColor =ConsoleColor.DarkGray;
+            List<string> name = new List<string>();
+            List<string> apartmentID = new List<string>();
+            List<string> address = new List<string>();
+            List<string> monthlyRent = new List<string>();
+            List<string> advanceMoney = new List<string>();
+            List<string> phoneNumber = new List<string>();
+            List<string> email = new List<string>();
+            List<string> date = new List<string>();
+
+            string search_name, new_Rent;
+            WriteLine("Enter Tenant name and new Rent:");
+            search_name = ReadLine();
+            new_Rent =ReadLine();
+            string n="abc";
+
+
+            while (n != null)
+            {
+                n = sr.ReadLine();
+
+                name.Add(n);
+                apartmentID.Add(sr.ReadLine());
+                address.Add(sr.ReadLine());
+                monthlyRent.Add(sr.ReadLine());
+                advanceMoney.Add(sr.ReadLine());
+                phoneNumber.Add(sr.ReadLine());
+                email.Add(sr.ReadLine());
+                date.Add(sr.ReadLine());
+                
+            }
+
+            string[] arr_name = name.ToArray();
+            string[] arr_apartmentID = apartmentID.ToArray();
+            string[] arr_address = address.ToArray();
+            string[] arr_monthlyRent = monthlyRent.ToArray();
+            string[] arr_advanceMoney= advanceMoney.ToArray();
+            string[] arr_phoneNumber = phoneNumber.ToArray();
+            string[] arr_email = email.ToArray();
+            string[] arr_date = date.ToArray();
+
+            for (int i = 0; i < arr_name.Length-1; i++)
+            {
+                WriteLine(i+". "+ arr_name[i]);
+            }
+
+            
+            for (int i=0;i<arr_name.Length-1;i++)
+            {
+                if(search_name.ToUpper().Equals(arr_name[i].ToUpper()))
+                {
+                    arr_monthlyRent[i] = new_Rent;
+                }
+            }
+            
+            sr.Close();
+
+            StreamWriter sw = new StreamWriter(@"E:/sp_20.txt");
+
+
+            for (int i = 0; i < arr_name.Length-1; i++)
+            {
+                if(arr_name[i] == null)
+                {
+                    continue;
+                }
+                sw.WriteLine(arr_name[i]);
+                sw.WriteLine(arr_apartmentID[i]);
+                sw.WriteLine(arr_address[i]);
+                sw.WriteLine(arr_monthlyRent[i]);
+                sw.WriteLine(arr_advanceMoney[i]);
+                sw.WriteLine(arr_phoneNumber[i]);
+                sw.WriteLine(arr_email[i]);
+                sw.WriteLine(arr_date[i]);
+            }
+            sw.Close();
+
+        }
+
+        public static void delete()
+        {
+            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+
+            ForegroundColor =ConsoleColor.DarkRed;
+            BackgroundColor =ConsoleColor.Gray;
+            List<string> name = new List<string>();
+            List<string> apartmentID = new List<string>();
+            List<string> address = new List<string>();
+            List<string> monthlyRent = new List<string>();
+            List<string> advanceMoney = new List<string>();
+            List<string> phoneNumber = new List<string>();
+            List<string> email = new List<string>();
+            List<string> date = new List<string>();
+
+
+            string search_name;
+             WriteLine("Enter Tenant name to delete:");
+            search_name = ReadLine();
+           
+            string n = "abc";
+
+
+            while (n != null)
+            {
+                n = sr.ReadLine();
+
+           
+
+                name.Add(n);
+                apartmentID.Add(sr.ReadLine());
+                address.Add(sr.ReadLine());
+                monthlyRent.Add(sr.ReadLine());
+                advanceMoney.Add(sr.ReadLine());
+                phoneNumber.Add(sr.ReadLine());
+                email.Add(sr.ReadLine());
+                date.Add(sr.ReadLine());
+
+            }
+
+    
+               string[] arr_name = name.ToArray();
+            string[] arr_apartmentID = apartmentID.ToArray();
+            string[] arr_address = address.ToArray();
+            string[] arr_monthlyRent = monthlyRent.ToArray();
+            string[] arr_advanceMoney= advanceMoney.ToArray();
+            string[] arr_phoneNumber = phoneNumber.ToArray();
+            string[] arr_email = email.ToArray();
+            string[] arr_date = date.ToArray();
+
+            sr.Close();
+
+            StreamWriter sw = new StreamWriter(@"E:/sp_20.txt");
+
+
+            for (int i = 0; i < arr_name.Length-1; i++)
+            {
+               
+
+                if (search_name.ToUpper().Equals(arr_name[i].ToUpper()))
+                {
+                    continue;
+                }
+           
+
+                sw.WriteLine(arr_name[i]);
+                sw.WriteLine(arr_apartmentID[i]);
+                sw.WriteLine(arr_address[i]);
+                sw.WriteLine(arr_monthlyRent[i]);
+                sw.WriteLine(arr_advanceMoney[i]);
+                sw.WriteLine(arr_phoneNumber[i]);
+                sw.WriteLine(arr_email[i]);
+                sw.WriteLine(arr_date[i]);
+            }
+            sw.Close();
+
+        }
+        /////////////inner part end///////////////
 
     }
      class listMenu
@@ -79,7 +402,7 @@ namespace RMSConsoleApplication
                 {
                    
                             ForegroundColor =ConsoleColor.White;
-                            BackgroundColor = ConsoleColor.Red;
+                            BackgroundColor = ConsoleColor.DarkRed;
                 }
                 else
                 {
