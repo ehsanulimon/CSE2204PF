@@ -15,7 +15,7 @@ namespace RMSConsoleApplication
            
             Clear();
      
-            string[] listoptions = {"Show all Tenant info","Add new Tenant info","Tenant update","Tenant deletes","Exit"};
+            string[] listoptions = {"Search Tenant info","Add new Tenant info","Tenant update","Tenant deletes","Exit","Show all info"};
             listMenu worklist =new listMenu(listoptions);
             worklist.DisplayOptionsList();
             int SelectedIndex = worklist.run();
@@ -23,7 +23,7 @@ namespace RMSConsoleApplication
               switch (SelectedIndex)
             {
                 case 0:
-                      info();
+                      search_tenant();
                     B1_UpdateTenant n0 =new B1_UpdateTenant();
                     break;
                 case 1:
@@ -39,14 +39,17 @@ namespace RMSConsoleApplication
                     B1_UpdateTenant n3 =new B1_UpdateTenant();
                     break;
                 case 4:
+                    
                       WriteLine("Your work is done and you can go now.");
-                   
+                 break;
+                 case 5:
+                   // allinfo();   
+                   B1_UpdateTenant n5 =new B1_UpdateTenant();
                     break;
-                   
             }
         }
         ///////////////////inner part start///////////////////////
-        public static void  info()
+       /* public static void  info()
         {
                
                Write("Show all info (Y)\nSearch info (N): ");
@@ -77,42 +80,8 @@ namespace RMSConsoleApplication
                 WriteLine("try again");
             }
         }
-          public static void allinfo()
-        {
-            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
-            string name="abc", apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
-
-            while(name!=null)
-            {
-                name = sr.ReadLine();
-                apartmentID = sr.ReadLine();
-                address = sr.ReadLine();
-                monthlyRent = sr.ReadLine();
-                advanceMoney = sr.ReadLine();
-                phoneNumber = sr.ReadLine();
-                email = sr.ReadLine();
-                date = sr.ReadLine();
-                if (name != null)
-                {
-                     ForegroundColor =ConsoleColor.Green;
-                       
-                         WriteLine("--------------------------");
-                         WriteLine("|--Name         : "+name+"--|");
-                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
-                         WriteLine("|--Address      : "+address+"--|");
-                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
-                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
-                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
-                         WriteLine("|--Email        : "+email+"--|");
-                         WriteLine("|--Date         : "+date+"--|");
-                         
-                         WriteLine("--------------------------");
-                }
-            }
-
-         ReadLine();
-        }
-
+         
+        */
         ////
     public static void addnew_tenant()
         {
@@ -215,7 +184,43 @@ namespace RMSConsoleApplication
             sr.Close();
            ReadLine();
         }
-     
+     /*
+      public static void allinfo()
+        {
+            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+            string name="abc", apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
+
+            while(name!=null)
+            {
+                name = sr.ReadLine();
+                apartmentID = sr.ReadLine();
+                address = sr.ReadLine();
+                monthlyRent = sr.ReadLine();
+                advanceMoney = sr.ReadLine();
+                phoneNumber = sr.ReadLine();
+                email = sr.ReadLine();
+                date = sr.ReadLine();
+                if (name != null)
+                {
+                     ForegroundColor =ConsoleColor.Green;
+                       
+                         WriteLine("--------------------------");
+                         WriteLine("|--Name         : "+name+"--|");
+                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
+                         WriteLine("|--Address      : "+address+"--|");
+                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
+                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
+                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
+                         WriteLine("|--Email        : "+email+"--|");
+                         WriteLine("|--Date         : "+date+"--|");
+                         
+                         WriteLine("--------------------------");
+                }
+            }
+
+         ReadLine();
+        }
+        */
 
        public static void update()
         {

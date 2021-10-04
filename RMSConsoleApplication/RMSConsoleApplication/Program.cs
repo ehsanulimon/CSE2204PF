@@ -23,7 +23,7 @@ namespace RMSConsoleApplication
     | | | -_|   | .'|   |  _|  | | | | .'|   | .'| . | -_|     | -_|   |  _|  |__   | | |_ -|  _| -_|     |
     |_| |___|_|_|__,|_|_|_|    |_|_|_|__,|_|_|__,|_  |___|_|_|_|___|_|_|_|    |_____|_  |___|_| |___|_|_|_|
                                                  |___|                              |___|                  
-
+use the arrow keys to cycle thorgh options and then press enter to select one.
 ";
           
             string[] options = {"Update Tenant","Monthly Rental","    Exit    "};
