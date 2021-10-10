@@ -14,8 +14,8 @@ namespace RMSConsoleApplication
         {
            
             Clear();
-     
-            string[] listoptions = {"Search Tenant info","Add new Tenant info","Tenant update","Tenant deletes","Exit","Show all info"};
+    
+            string[] listoptions = {"Show the Tenant info","Add new Tenant info","Tenant update","Tenant deletes","Exit"};
             listMenu worklist =new listMenu(listoptions);
             worklist.DisplayOptionsList();
             int SelectedIndex = worklist.run();
@@ -27,7 +27,7 @@ namespace RMSConsoleApplication
                     B1_UpdateTenant n0 =new B1_UpdateTenant();
                     break;
                 case 1:
-                        addnew_tenant();
+                    addnew_tenant();
                     B1_UpdateTenant n1 =new B1_UpdateTenant();
                     break;
                 case 2:
@@ -42,47 +42,11 @@ namespace RMSConsoleApplication
                     
                       WriteLine("Your work is done and you can go now.");
                  break;
-                 case 5:
-                   // allinfo();   
-                   B1_UpdateTenant n5 =new B1_UpdateTenant();
-                    break;
+             
             }
         }
         ///////////////////inner part start///////////////////////
-       /* public static void  info()
-        {
-               
-               Write("Show all info (Y)\nSearch info (N): ");
-                  string  str = ReadLine();
-         
-                string sY = "Y";
-                bool bY = str.Contains(sY);
-                 string sy = "y";
-                bool by = str.Contains(sy);
-                string sN = "N";
-                bool bN = str.Contains(sN);
-                 string sn = "n";
-                bool bn = str.Contains(sn);
 
-                if (bY == true || by==true)
-                {
-                   allinfo();
-                   
-                }
-                else if(bN==true ||bn==true)
-                {
-         
-                     search_tenant();
-                  
-                }
-            else
-            {
-                WriteLine("try again");
-            }
-        }
-         
-        */
-        ////
     public static void addnew_tenant()
         {
             if (!File.Exists(@"E:/sp_20.txt"))
@@ -114,7 +78,7 @@ namespace RMSConsoleApplication
             {
                 StreamWriter sw = File.AppendText(@"E:/sp_20.txt");
 
-                        sw.WriteLine(name);
+                sw.WriteLine(name);
                 sw.WriteLine(apartmentID);
                sw.WriteLine(address);
              sw.WriteLine(monthlyRent);
@@ -131,8 +95,114 @@ namespace RMSConsoleApplication
             }
 
         }
+  /* public static void  info()
+        {    
+                StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+               string name="abc", apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
+          
 
-       public static void search_tenant()
+               Write("Show all info (Y)\nSearch info (N): ");
+                  string  str = ReadLine();
+         
+                string sY = "Y";
+                bool bY = str.Contains(sY);
+                 string sy = "y";
+                bool by = str.Contains(sy);
+                string sN = "N";
+                bool bN = str.Contains(sN);
+                 string sn = "n";
+                bool bn = str.Contains(sn);
+
+                if (bY == true || by==true)
+                {
+                 //  allinfo();
+          string search_name;
+            int found = 0;
+            Console.WriteLine("Enter the Tenant name to show details:");
+            search_name = Console.ReadLine();
+
+            while (name!=null)
+            {
+                name = sr.ReadLine();
+                apartmentID = sr.ReadLine();
+                address = sr.ReadLine();
+                monthlyRent = sr.ReadLine();
+                advanceMoney = sr.ReadLine();
+                phoneNumber = sr.ReadLine();
+                email = sr.ReadLine();
+                date = sr.ReadLine();
+
+                if (name !=null && name.ToUpper().Equals(search_name.ToUpper()))
+                {
+                    found = 1;
+                         ForegroundColor =ConsoleColor.Blue;
+                       
+                         WriteLine("--------------------------");
+                         WriteLine("|--Name         : "+name+"--|");
+                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
+                         WriteLine("|--Address      : "+address+"--|");
+                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
+                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
+                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
+                         WriteLine("|--Email        : "+email+"--|");
+                         WriteLine("|--Date         : "+date+"--|");
+                         
+                         WriteLine("--------------------------");
+                   
+                    break;
+                }
+            }
+
+            if(found==0)
+            {
+                WriteLine("No such Tenant exists.");
+            }
+            sr.Close();
+         
+                }
+                else if(bN==true ||bn==true)
+                {
+         
+                   //  search_tenant();
+
+                
+            while(name!=null)
+            {
+                name = sr.ReadLine();
+                apartmentID = sr.ReadLine();
+                address = sr.ReadLine();
+                monthlyRent = sr.ReadLine();
+                advanceMoney = sr.ReadLine();
+                phoneNumber = sr.ReadLine();
+                email = sr.ReadLine();
+                date = sr.ReadLine();
+                if (name != null)
+                {
+                     ForegroundColor =ConsoleColor.Green;
+                       
+                         WriteLine("--------------------------");
+                         WriteLine("|--Name         : "+name+"--|");
+                         WriteLine("|--Apartment ID : "+apartmentID+"--|");
+                         WriteLine("|--Address      : "+address+"--|");
+                         WriteLine("|--Monthly Rent : "+monthlyRent+"--|");
+                         WriteLine("|--Advance Money: "+advanceMoney+"--|");
+                         WriteLine("|--Phone Number : "+phoneNumber+"--|");
+                         WriteLine("|--Email        : "+email+"--|");
+                         WriteLine("|--Date         : "+date+"--|");
+                         
+                         WriteLine("--------------------------");
+                }
+            }
+
+                        sr.Close();
+                  
+                }
+            else
+            {
+                WriteLine("try again");
+            }
+        }
+    */  public static void search_tenant()
         {
             StreamReader sr = new StreamReader(@"E:/sp_20.txt");
 
@@ -220,12 +290,12 @@ namespace RMSConsoleApplication
 
          ReadLine();
         }
-        */
+      */
 
        public static void update()
         {
             StreamReader sr = new StreamReader(@"E:/sp_20.txt");
-              ForegroundColor =ConsoleColor.Yellow;
+            ForegroundColor =ConsoleColor.Yellow;
             BackgroundColor =ConsoleColor.DarkGray;
             List<string> name = new List<string>();
             List<string> apartmentID = new List<string>();
@@ -236,7 +306,7 @@ namespace RMSConsoleApplication
             List<string> email = new List<string>();
             List<string> date = new List<string>();
 
-            string search_name, new_Rent;
+            string search_name,new_Rent;
             WriteLine("Enter Tenant name and new Rent:");
             search_name = ReadLine();
             new_Rent =ReadLine();
@@ -246,7 +316,6 @@ namespace RMSConsoleApplication
             while (n != null)
             {
                 n = sr.ReadLine();
-
                 name.Add(n);
                 apartmentID.Add(sr.ReadLine());
                 address.Add(sr.ReadLine());
@@ -320,20 +389,13 @@ namespace RMSConsoleApplication
             List<string> email = new List<string>();
             List<string> date = new List<string>();
 
-
             string search_name;
              WriteLine("Enter Tenant name to delete:");
             search_name = ReadLine();
-           
             string n = "abc";
-
-
             while (n != null)
             {
                 n = sr.ReadLine();
-
-           
-
                 name.Add(n);
                 apartmentID.Add(sr.ReadLine());
                 address.Add(sr.ReadLine());
@@ -345,7 +407,6 @@ namespace RMSConsoleApplication
 
             }
 
-    
                string[] arr_name = name.ToArray();
             string[] arr_apartmentID = apartmentID.ToArray();
             string[] arr_address = address.ToArray();
@@ -359,17 +420,12 @@ namespace RMSConsoleApplication
 
             StreamWriter sw = new StreamWriter(@"E:/sp_20.txt");
 
-
             for (int i = 0; i < arr_name.Length-1; i++)
             {
-               
-
                 if (search_name.ToUpper().Equals(arr_name[i].ToUpper()))
                 {
                     continue;
                 }
-           
-
                 sw.WriteLine(arr_name[i]);
                 sw.WriteLine(arr_apartmentID[i]);
                 sw.WriteLine(arr_address[i]);
@@ -383,7 +439,6 @@ namespace RMSConsoleApplication
 
         }
         /////////////inner part end///////////////
-
     }
      class listMenu
         {

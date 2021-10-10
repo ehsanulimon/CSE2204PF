@@ -24,44 +24,29 @@ namespace RMSConsoleApplication
     |_| |___|_|_|__,|_|_|_|    |_|_|_|__,|_|_|__,|_  |___|_|_|_|___|_|_|_|    |_____|_  |___|_| |___|_|_|_|
                                                  |___|                              |___|                  
 use the arrow keys to cycle thorgh options and then press enter to select one.
-";
-          
+";         
             string[] options = {"Update Tenant","Monthly Rental","    Exit    "};
             Menu mainManu =new Menu(Logo,options);
             mainManu.DisplayOptions();
             int SelectedIndex = mainManu.run();
-
             switch (SelectedIndex)
             {
                 case 0:
-                  B1_UpdateTenant b1=new  B1_UpdateTenant();
-                    
+                  B1_UpdateTenant b1=new  B1_UpdateTenant();                   
                  WriteLine("\nPress any key to exit...");
-                 ReadKey(true);
-                
-
+                 ReadKey(true);              
                    break; 
                 case 1:
                    B2_MonthlyRental b2=new  B2_MonthlyRental();
-
                  WriteLine("\nPress any key to exit...");
-                 ReadKey(true);
-                
-
+                 ReadKey(true);              
                     break; 
                  case 2:
-
                  WriteLine("\nPress any key to exit...");
                  ReadKey(true);
-             
-
                     break;
             }
-       
-    
-            
         }
-        
     }
       class Menu
         {      
