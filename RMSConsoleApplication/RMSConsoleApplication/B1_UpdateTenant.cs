@@ -49,14 +49,14 @@ namespace RMSConsoleApplication
 
     public static void addnew_tenant()
         {
-            if (!File.Exists(@"E:/sp_20.txt"))
+            if (!File.Exists(@"E:/B1_UpdateTenant.txt"))
             {
-                File.Create(@"E:/sp_20.txt").Close();
+                File.Create(@"E:/B1_UpdateTenant.txt").Close();
             }
 
             string name, apartmentID,address,monthlyRent,advanceMoney, phoneNumber,email,date;
              ForegroundColor =ConsoleColor.Yellow;
-            WriteLine("Please. Create a new Tenant Account info:");
+            WriteLine("Please. Create a new Tenant Account:");
             Write("Name ");
             name = ReadLine();
             Write("Apartment ID ");
@@ -76,7 +76,7 @@ namespace RMSConsoleApplication
 
             try
             {
-                StreamWriter sw = File.AppendText(@"E:/sp_20.txt");
+                StreamWriter sw = File.AppendText(@"E:/B1_UpdateTenant.txt");
 
                 sw.WriteLine(name);
                 sw.WriteLine(apartmentID);
@@ -204,7 +204,7 @@ namespace RMSConsoleApplication
         }
     */  public static void search_tenant()
         {
-            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+            StreamReader sr = new StreamReader(@"E:/B1_UpdateTenant.txt");
 
             
 
@@ -294,7 +294,7 @@ namespace RMSConsoleApplication
 
        public static void update()
         {
-            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+            StreamReader sr = new StreamReader(@"E:/B1_UpdateTenant.txt");
             ForegroundColor =ConsoleColor.Yellow;
             BackgroundColor =ConsoleColor.DarkGray;
             List<string> name = new List<string>();
@@ -352,7 +352,7 @@ namespace RMSConsoleApplication
             
             sr.Close();
 
-            StreamWriter sw = new StreamWriter(@"E:/sp_20.txt");
+            StreamWriter sw = new StreamWriter(@"E:/B1_UpdateTenant.txt");
 
 
             for (int i = 0; i < arr_name.Length-1; i++)
@@ -376,7 +376,7 @@ namespace RMSConsoleApplication
 
         public static void delete()
         {
-            StreamReader sr = new StreamReader(@"E:/sp_20.txt");
+            StreamReader sr = new StreamReader(@"E:/B1_UpdateTenant.txt");
 
             ForegroundColor =ConsoleColor.DarkRed;
             BackgroundColor =ConsoleColor.Gray;
@@ -418,7 +418,7 @@ namespace RMSConsoleApplication
 
             sr.Close();
 
-            StreamWriter sw = new StreamWriter(@"E:/sp_20.txt");
+            StreamWriter sw = new StreamWriter(@"E:/B1_UpdateTenant.txt");
 
             for (int i = 0; i < arr_name.Length-1; i++)
             {
