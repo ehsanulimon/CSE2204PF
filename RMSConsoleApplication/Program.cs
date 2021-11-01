@@ -6,26 +6,23 @@ using System.Threading.Tasks;
 using System.IO;
 
 
-namespace RMSConsoleApplication
+namespace NewConsoleApplication2
 {
-    class B2_MonthlyRental
+    class Program
     {
-
-        public B2_MonthlyRental()
+        static void Main(string[] args)
         {
-                 Console.Clear();
-             if (!File.Exists(@"E:/Monthly_Rental.txt"))
+            if (!File.Exists(@"L:/Monthly_Rental.txt"))
             {
-                File.Create(@"E:/Monthly_Rental.txt").Close();
+                File.Create(@"L:/Monthly_Rental.txt").Close();
             }
             MainMenu();
             RPM();
             PUpdate();
-
-
         }
 
-         static void MainMenu()
+
+        static void MainMenu()
         {
             Console.Clear();
             Console.WriteLine("=================================");
@@ -160,7 +157,7 @@ namespace RMSConsoleApplication
             Cash = Console.ReadLine();
             try
             {
-                StreamWriter sw = File.AppendText(@"E:/Monthly_Rental.txt");
+                StreamWriter sw = File.AppendText(@"L:/Monthly_Rental.txt");
                 //sw.WriteLine(Cash);
                 sw.WriteLine("Cash=" + Cash);
                 sw.Close();
@@ -184,7 +181,7 @@ namespace RMSConsoleApplication
 
             Console.WriteLine("P Update");
             Console.ReadLine();
-            StreamReader sr = new StreamReader(@"E:/Monthly_Rental.txt");
+            StreamReader sr = new StreamReader(@"L:/Monthly_Rental.txt");
 
             string Cash;
             Cash = sr.ReadLine();
@@ -239,7 +236,7 @@ namespace RMSConsoleApplication
         {
             Console.WriteLine("Check the Monthly rent");
             Console.ReadLine();
-            StreamReader sr = new StreamReader(@"E:/Monthly_Rental.txt");
+            StreamReader sr = new StreamReader(@"L:/Monthly_Rental.txt");
 
             string Cash;
             Cash = sr.ReadLine();
@@ -253,7 +250,7 @@ namespace RMSConsoleApplication
             Console.WriteLine(".......Are you sure you want to Exit.......\n .......Press the Enter key to Confirm.......");
             Console.ReadLine();
             System.Environment.Exit(1);
-        }  
-        
+        }
+
     }
 }
