@@ -12,12 +12,9 @@ namespace RMSConsoleApplication
     {
         static void Main(string[] args)
         {   
-   
-            
-                 Title = "Tenant Management System";
-             string Logo;
-           
-             Logo = @"                                                                                                  
+
+              Title = "Tenant Management System";
+             string  Logo = @"                                                                                                  
    _____                 _      _____                                   _      _____         _             
   |_   _|___ ___ ___ ___| |_   |     |___ ___ ___ ___ ___ _____ ___ ___| |_   |   __|_ _ ___| |_ ___ _____ 
     | | | -_|   | .'|   |  _|  | | | | .'|   | .'| . | -_|     | -_|   |  _|  |__   | | |_ -|  _| -_|     |
@@ -26,20 +23,21 @@ namespace RMSConsoleApplication
 use the arrow keys to cycle thorgh options and then press enter to select one.
 ";         
             string[] options = {"Update Tenant","Monthly Rental","    Exit    "};
+           //start********
             Menu mainManu =new Menu(Logo,options);
+
             mainManu.DisplayOptions();
             int SelectedIndex = mainManu.run();
             switch (SelectedIndex)
             {
                 case 0:
                   B1_UpdateTenant b1=new  B1_UpdateTenant();                   
-                 WriteLine("\nPress any key to exit...");
-                 ReadKey(true);              
+                // WriteLine("\nPress any key to exit...");
+               //  ReadKey(true);              
                    break; 
                 case 1:
                    B2_MonthlyRental b2=new  B2_MonthlyRental();
-                 WriteLine("\nPress any key to exit...");
-                 ReadKey(true);              
+                           
                     break; 
                  case 2:
                  WriteLine("\nPress any key to exit...");
@@ -55,13 +53,13 @@ use the arrow keys to cycle thorgh options and then press enter to select one.
         private string logo;
             public Menu(string Logo, string[] options)
             {
-                Options =  options;
+                Options = options;
                   logo = Logo;
                 SelectedIndex = 0;
             }
             public void DisplayOptions()
             {       
-                      WriteLine(logo);     
+                 WriteLine(logo);     
                 for(int i=0; i < Options.Length; i++)
                 {
                 string currentOption = Options[i];
@@ -115,15 +113,3 @@ use the arrow keys to cycle thorgh options and then press enter to select one.
         }
   
 }
-//   ConsoleKeyInfo keypressed = ReadKey();
-//keypressed.Key == ConsoleKey.Enter
-/*  class exit
-    {
-          
-            
-                WriteLine("\nPress any key to exit...");
-                ReadKey(true);
-                Environment.Exit(0);
-
-            
-    }*/
