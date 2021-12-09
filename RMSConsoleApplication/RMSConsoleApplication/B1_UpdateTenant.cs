@@ -14,7 +14,6 @@ namespace RMSConsoleApplication
         {
            
             Clear();
-    
             string[] listoptions = {"Show the Tenant info","Add new Tenant info","Tenant update","Tenant deletes","Exit"};
             listMenu worklist =new listMenu(listoptions);
             worklist.DisplayOptionsList();
